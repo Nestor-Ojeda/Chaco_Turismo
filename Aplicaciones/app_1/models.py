@@ -32,7 +32,7 @@ class Ciudad(models.Model):
 			return texto.format(self.provincia, self.nom_ciudad, self.cod_Postal, self.zona_turistica)
 
 class Lugares_Turisticos(models.Model):
-	nom_Ciudad = models.ForeignKey(Ciudad,  on_delete=models.SET_NULL, null=True)
+	zona_turistica = models.ForeignKey(Ciudad,  on_delete=models.SET_NULL, null=True, related_name="zona") 
 	atractivos = models.TextField()
 	descripcion = models.TextField(max_length=500)
 	clalificacion = models.CharField(max_length=2)
@@ -41,7 +41,7 @@ class Lugares_Turisticos(models.Model):
 
 	def __str__(self):
 		texto = '{0}-{1}-{2}-{3}-{4}-{5}'
-		return texto.format(self.nom_Ciudad, self.atractivos, self.descripcion, self.calificacion, self.ubicación, self.recomendaciones)
+		return texto.format( self.zona_turistica, self.atractivos, self.descripcion, self.calificacion, self.ubicación, self.recomendaciones)
 
 
 
