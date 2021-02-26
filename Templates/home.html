@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<style>
+  body {
+    background-color: black;
+    text-align: center;
+    color: white;
+  }
+  .button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {background-color: #4CAF50;} /* Green */
+
+  </style>
+
+  <h1> Hola {{ user.username }}! </h1>
+  <img src="https://www.w3schools.com/tryit/avatar.png" style="width:200px">
+  <h1>Esto es un texto de prueba</h1>
+  <button class="button button1"><a href="{% url 'logout' %}">Salir</a></button>
+{% else %}
+<style>
+  body {
+    background-color: rgb(1, 7, 6);
+    text-align: center;
+    color: white;
+  }
+  .button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {background-color: #4CAF50;} /* Green */
+
+  </style>
+  <h1><p>Aun no iniciaste sesion</p></h1>
+  <button class="button button1"><a href="{% url 'login' %}">Iniciar sesion</a></button>
+{% endif %}
+{% endblock %}
