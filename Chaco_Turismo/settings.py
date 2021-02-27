@@ -56,6 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ['Templates'],
+        'DIRS': ['Templates', str(BASE_DIR.joinpath('templates'))], #agregamos las plantillas desde base
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,3 +125,6 @@ STATICFILES_DIRS = ('static'),
 MEDIA_URL = '/media/'
 MEDIA_ROOT = ('media'),
 # os.path.join(os.path.dirname(BASE_DIR), 'media')
+
+LOGIN_REDIRECT_URL = 'home' # direccion de login
+LOGOUT_REDIRECT_URL = 'home'  # direccion logout
